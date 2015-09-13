@@ -1,0 +1,61 @@
+title = "Home"
+url = "/"
+layout = "default"
+is_hidden = "0"
+
+[blogCategories]
+slug = "{{ :slug }}"
+displayEmpty = "0"
+categoryPage = "categories"
+==
+<?php
+use RainLab\Blog\Models\Post;
+
+function onStart(){
+    $this['posts'] = Post::isPublished()
+					    ->orderBy('published_at', 'desc')
+					    ->take(5)
+					    ->with('categories')
+					    ->get();
+					    
+    $this['postList'] = Post::isPublished()
+					    ->orderBy('published_at', 'desc')
+					    ->take(10)
+					    ->with('categories')
+					    ->get();
+}
+?>
+==
+<div class="col-sm-8 col-sm-offset-1 col-sm-push-3  box item-list">
+    <section>
+        <h1>Latest articles</h1>
+        {% for post in posts %}
+            <article>
+            	<h2>{{ post.title }}</h2>
+            	<p>{{ post.excerpt }}. <a href="/blog/{{ post.slug }}">Read more</a></p>
+            			<details open>
+            			    <summary>Categories</summary>
+            			        <span class="icons">
+            			        {% for category in post.categories %}
+            			            <a class="icon icon-{{category.slug}}" href="/categories/{{ category.slug  }}">
+            			             </a>
+            			         {% endfor %}
+            			         </span>
+            			</details>
+            			<hr />
+            </article>
+        {% endfor %}
+    </section>
+</div>
+<div class="col-sm-3 col-sm-pull-9  sidebar box">
+<h2>Recent Posts</h2>
+<ul>
+{% for post in postList %}
+    <li><a href="/blog/{{ post.slug }}">{{ post.title }}</a></li>
+{% endfor %}
+</ul>
+</div>
+<div class="col-sm-3 col-sm-pull-9  sidebar box">
+    <h2>Categories</h2>
+    {% component 'blogCategories' %}
+</div>

@@ -1,0 +1,85 @@
+==
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{ this.page.title }} | K P BOWLER</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <meta name="description" content="{{ this.page.meta_description }}">
+        <meta name="title" content="{{ this.page.meta_title }}">
+        <meta name="author" content="October CMS">
+        <link rel="icon" type="image/png" href="{{ 'assets/images/logo.png'|theme }}" />
+        
+        {% styles %}
+        <link href="{{ [
+        	'assets/css/bootstrap.css',
+            'assets/css/theme.css',
+            'assets/css/fonts.css'
+        ]|theme }}" rel="stylesheet">
+        <link href="//cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+    	<div id="main-menu" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/">K P Bowler</a>
+            </div>
+            <div class="collapse navbar-collapse">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="/">Home</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#about">About</a></li>
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div>
+        </div>
+        <div class="jumbotron" style="background-image:url('{{ bannerImage }}');background-position:center;background-size:cover;">
+			<div class="container">
+				<h1>{{ post.title }}</h1>
+			</div>
+		</div>
+		<div class="container blog" id="main">
+			<div class="row">
+	
+			<div class="col-sm-8 col-sm-offset-1 col-sm-push-3  box item-list">
+				<span class="icons">{% for cat in post.categories %}<a class="icon icon-{{ cat.slug }} active" href="/categories/{{ cat.slug }}" title="Posts about {{ cat.name }}"></a> {% endfor %}</span>
+				<div id="blog-content">
+					{% page %}
+				</div>
+				<hr>
+				<details open>
+					<summary>Show/Hide<summary>
+					<p>Published on {{ post.published_at|date("F jS, Y") }}</p>
+				</details>
+				{% partial 'tweet' %}
+			</div>
+			<div class="col-sm-3 col-sm-pull-9  sidebar box">
+				<h2>Recent Posts</h2>
+				<ul>
+					{% for post in postList %}
+					<li><a href="/blog/{{ post.slug }}">{{ post.title }}</a></li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="col-sm-3 col-sm-pull-9  sidebar box">
+				<h2>Categories</h2>
+				{% component 'blogCategories' %}
+			</div>
+	
+			{% partial 'mailing' %}
+			</div>
+		</div>
+        
+        {% partial 'footer_menu' %}
+        {% partial 'footer' %}
+    </body>
+</html>

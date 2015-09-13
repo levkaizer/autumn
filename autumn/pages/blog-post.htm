@@ -1,0 +1,35 @@
+title = "Blog Post"
+url = "/blog/:slug"
+layout = "blog_post"
+description = "The blog post."
+is_hidden = "0"
+
+[blogPost]
+slug = "{{ :slug }}"
+categoryPage = "categories"
+
+[blogCategories]
+slug = "{{ :slug }}"
+displayEmpty = "0"
+categoryPage = "categories"
+==
+<?php
+use RainLab\Blog\Models\Post;
+
+function onEnd()
+{
+    $this->page->title = $this['post']->title;
+    $this['bannerImage'] = '';
+    if(count($this['post']->featured_images) > 0) {
+        $this['bannerImage'] = $this['post']->featured_images[0]->getPath();
+    }
+    
+    $this['postList'] = Post::isPublished()
+					    ->orderBy('published_at', 'desc')
+					    ->take(10)
+					    ->with('categories')
+					    ->get();
+}
+?>
+==
+{{ post.content_html|raw }}

@@ -1,0 +1,54 @@
+title = "Categories"
+url = "/categories/:slug"
+layout = "default"
+description = "View a list of all blog categories on the site form this page."
+is_hidden = "0"
+==
+<?php
+use RainLab\Blog\Models\Post;
+use RainLab\Blog\Models\Category;
+
+function onStart(){
+    $slug = $this->param('slug');
+    
+    if($slug) {
+        $this['category'] = Category::where('slug', '=', $slug)->first();
+        $this['posts'] = array();
+    
+        if( $this['category'] ){
+            $post = new Post;
+            $query = $post->isPublished()
+                        ->orderBy('published_at', 'desc')
+                        ->with('categories');
+            $this['posts'] = $post->scopeFilterCategories($query, [ $this['category']->id ])->get();
+            $this['postCount'] = count($this['posts']);
+        }
+    }
+}
+?>
+==
+<div class="col-sm-8 col-sm-offset-1 col-sm-push-3  box item-list">
+    <section>
+        <h1>Posts tagged with {{ category.name }}</h1>
+        {%if postCount > 0 %}
+        {% for post in posts %}
+        	<article>
+        		<h2>{{ post.title }}</h2>
+        		<p>{{ post.excerpt }}. <a href="/blog/{{ post.slug }}">Read more</a></p>
+        				<details open>
+        					<summary>Categories</summary>
+        						<span class="icons">
+        						{% for category in post.categories %}
+        							<a class="icon icon-{{category.slug}}" href="/categories/{{ category.slug  }}">
+        							 </a>
+        						 {% endfor %}
+        						 </span>
+        				</details>
+        				<hr />
+        	</article>
+        {% endfor %}
+        {% else %}
+        <p>No posts in this category. <A href="/categories">Select a new one.</a></p>
+        {% endif %}
+    </section>
+</div>

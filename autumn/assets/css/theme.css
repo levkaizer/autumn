@@ -1,0 +1,314 @@
+body {
+    background-color:#e7d6b8;
+    margin-top:50px;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+}
+
+#logo {
+    background: url('../images/logo-large.png') no-repeat center center;
+    height:300px;
+    margin-top:50px
+}
+
+.navbar-inverse {
+    opacity:0.6;
+}
+
+.box {
+    background-color:#fff;
+    margin-bottom:30px;
+}
+
+.sidebar {
+    padding:0 0 10px 0;
+}
+
+.sidebar h2 {
+    background-color:#ee1289;
+    margin:0 0 10px 0;
+    padding:9px 0 8px 6px;
+    font-size:24px;
+    color:#fff;
+}
+
+.sidebar ul {
+	padding-right:40px;
+	overflow:hidden;
+	list-style:none;
+}
+
+.sidebar ul li {
+	margin: 4px 0 10px 0;
+	list-style-type:none;
+	text-indent:-0.7em;
+}
+
+.sidebar ul li:before {
+	content: "• ";
+	color:#ee1289;
+}
+
+
+.sidebar ul li a {
+	color:#000;
+	text-align:center;
+	font-size:14px;
+}
+
+.sidebar ul li a:hover {
+	text-decoration:none;
+	color:#ee1289;
+}
+
+.content, .item-list {
+    padding-bottom:30px;
+}
+
+h1 {
+    color:#ee1289;
+    font-weight:bold;
+    margin:35px 0 33px 0;
+    padding:0;
+    font-size:40px;
+    line-height:40px;
+    -webkit-text-size-adjust:150%;
+}
+
+#main h1, #main h2 {
+    font-family: 'franchiseregular';
+}
+
+.content p {
+    font-size:14px;
+    -webkit-text-size-adjust:125%;
+}
+
+::selection {
+	background: #ee1289; /* Safari */
+	color:#fff;
+	}
+::-moz-selection {
+	background: #ee1289; /* Firefox */
+	color:#fff;
+}
+
+@media (min-width: 768px) {
+	h1 {
+		-webkit-text-size-adjust:0;
+	}
+
+	.content p {
+    	-webkit-text-size-adjust:0;
+	}
+}
+@media (min-width: 992px) {
+    body {
+        background: url('../images/bg.jpg') no-repeat center center fixed;
+        background-size:cover;
+    }
+}
+@media (min-width: 1200px) {
+
+}
+
+
+
+.icons {
+    float:right;
+}
+
+.icon {
+    display:inline-block;
+    width:40px;
+    height:40px;
+    background-repeat:no-repeat;
+    /* Animations */
+    opacity:1;
+    transition:opacity 0.5s;
+    -webkit-transition: opacity 0.5s;
+    /* -webkit-backface-visibility: hidden; */
+    transform: translateZ(0);
+}
+
+.icon:hover, .icon:active, .icon.active {
+    opacity:0.7;
+}
+
+.icon-drupal {
+    background-image:url('../images/icon-drupal.png');
+}
+
+.icon-ios {
+    background-image:url('../images/icon-ios.png');
+}
+
+.icon-js {
+    background-image:url('../images/icon-js.png');
+}
+
+.icon-laravel {
+    background-image:url('../images/icon-laravel.png');
+}
+
+.icon-wp {
+    background-image:url('../images/icon-wp.png');
+}
+
+.icon-php {
+    background-image:url('../images/icon-php.png');
+}
+
+.icon-html {
+    background-image:url('../images/icon-html.png');
+}
+
+.icon-css {
+    background-image:url('../images/icon-css.png');
+}
+
+/* Retina images */
+ @media
+ only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (   min--moz-device-pixel-ratio: 2),
+only screen and (     -o-min-device-pixel-ratio: 2/1),
+only screen and (        min-device-pixel-ratio: 2),
+only screen and (                min-resolution: 192dpi),
+only screen and (                min-resolution: 2dppx) {
+	.icon {
+		background-size:100%;
+	}
+   .icon-drupal {
+		background-image:url('../images/icon-drupal@2x.png');
+	}
+
+	.icon-ios {
+		background-image:url('../images/icon-ios@2x.png');
+	}
+
+	.icon-javascript {
+		background-image:url('../images/icon-js@2x.png');
+	}
+
+	.icon-laravel {
+		background-image:url('../images/icon-laravel@2x.png');
+	}
+
+	.icon-wp {
+		background-image:url('../images/icon-wp@2x.png');
+	}
+
+	.icon-php {
+		background-image:url('../images/icon-php@2x.png');
+	}
+
+	.icon-html {
+		background-image:url('../images/icon-html@2x.png');
+	}
+
+	.icon-css {
+		background-image:url('../images/icon-css@2x.png');
+	}
+}
+
+footer {
+    background-color:#333;
+    padding: 50px 0;
+    margin:20px 0 0 0;
+    color:#fff;
+}
+
+footer hr {
+    background-color:#666;
+    height:1px;
+    border:0;
+}
+
+footer a {
+    color:#ee1289;
+    font-weight:bold;
+}
+
+footer a:hover, footer a:active {
+    color:#EE3A8C;
+}
+
+.footer-block h3 {
+    color:#FFFFCC;
+    font-size:14px;
+}
+
+.footer-block li {
+    margin-bottom:5px;
+}
+
+.footer-block li span.themes {
+    display:block;
+    margin:4px 0;
+}
+
+.footer-block li span.themes a {
+    font-size:11px;
+    background-color:#444;
+    padding:3px;
+    border-radius:3px;
+    font-weight:300;
+}
+
+.footer-block li span.themes a:hover, .footer-block li span.themes a:active {
+    background-color:#666;
+    color:#FF6EB4;
+    text-decoration:none;
+}
+
+.copy {
+    margin-top:30px;
+    text-align:center;
+    font-size:11px;
+}
+
+/* Mailchimp */
+
+#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; width:100%;}
+
+#mc_embed_signup form {
+    padding:0;
+    width:90%;
+    margin:5%;
+}
+
+#mc_embed_signup input.email {
+    width:100%;
+}
+
+#mc_embed_signup label {display:none;}
+
+/* Mailchimp END */
+
+
+/** Article list */
+
+.item-list section article, .item-list section article details {
+	width:100%;
+	overflow:hidden;
+}
+
+details summary::-webkit-details-marker {
+    color:#ee1289;
+}
+
+/** Article list  End */
+
+/* blog */
+#main.blog .row .box .icons {
+	margin-top:10px;
+}
+
+#blog-content {
+	margin-top:45px;
+}
+
+.jumbotron .container h1 {
+	text-align:center;
+	padding:70px;
+}

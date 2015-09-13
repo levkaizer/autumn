@@ -1,0 +1,24 @@
+title = "Category list"
+url = "/categories"
+layout = "default"
+is_hidden = "0"
+==
+<?php
+use RainLab\Blog\Models\Post;
+use RainLab\Blog\Models\Category;
+
+function onStart(){
+    $this['categories'] = Category::orderBy('name')->get();
+}
+?>
+==
+<div class="col-sm-8 col-sm-offset-1 col-sm-push-3  box item-list">
+    <section>
+        <h1>Categories</h1>
+        <ul>
+        {% for cat in categories %}
+        	<li><a href="/categories/{{ cat.slug }}">{{ cat.name }}</a></li>
+        {% endfor %}
+        </ul>
+    </section>
+</div>

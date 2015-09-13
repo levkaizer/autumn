@@ -1,0 +1,62 @@
+description = "Default layout"
+==
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{ this.page.title }} | K P BOWLER</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <meta name="description" content="{{ this.page.meta_description }}">
+        <meta name="title" content="{{ this.page.meta_title }}">
+        <meta name="author" content="October CMS">
+        <link rel="icon" type="image/png" href="{{ 'assets/images/logo.png'|theme }}" />
+        
+        {% styles %}
+        <link href="{{ [
+        	'assets/css/bootstrap.css',
+            'assets/css/theme.css',
+            'assets/css/fonts.css'
+        ]|theme }}" rel="stylesheet">
+        <link href="//cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+    	<div id="main-menu" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/">K P Bowler</a>
+            </div>
+            <div class="collapse navbar-collapse">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="/">Home</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#about">About</a></li>
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div>
+        </div>
+        
+        <div class="container" id="logo">
+
+        </div>
+        
+        <div class="container" id="main">
+        	<div class="row">
+        	{% page %}
+        	
+        	{% partial 'mailing' %}
+        	</div>
+        </div>
+        
+        {% partial 'footer_menu' %}
+        {% partial 'footer' %}
+    </body>
+</html>

@@ -1,0 +1,104 @@
+description = "The menu and footer element"
+==
+<?php
+use RainLab\Blog\Models\Post;
+
+use RainLab\Blog\Models\Category;
+
+
+function onStart(){
+
+    $this['categories'] = Category::all();
+    $this['recentPosts'] = Post::isPublished()
+					    ->orderBy('published_at', 'desc')
+					    ->take(5)
+					    ->with('categories')
+					    ->get();
+	$this['recentPostsCount'] = count($this['recentPosts']);
+					    
+}
+?>
+==
+<footer>
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-md-3 col-md-offset-1 footer-block other-posts">
+                    
+
+                        <h3>Other posts you might like</h3>
+                        {% if recentPostsCount > 0 %}
+                        <ul>
+                        	{% for post in recentPosts %}
+                            <li><a href="/blog/{{ post.slug }}">{{ post.title }}</a>
+                            	<span class="themes">
+                            		{% for cat in post.categories %}
+                                    <a href="/categories/{{ cat.slug }}" class="drupal">{{ cat.slug }}</a>
+                                    {% endfor %}
+                                </span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        {% else %}
+                        <p>There are currently no posts available.</p>
+                        {% endif %}
+
+                    </div>
+
+                    <div class="col-md-3 col-md-offset-1 footer-block menu">
+
+                        <h3>Menu</h3>
+
+                        <ul>
+
+                            <li><a href="/">Home</a></li>
+
+                            <li><a href="/categories">Categories</a></li>
+
+                            <li><a href="#">Portfolio</a></li>
+
+                            <li><a href="#">About</a></li>
+
+                        </ul>
+
+                        <h3>Categories</h3>
+
+						<ul>
+
+                        {% for cat in categories %}
+
+                        	<li><a href="/categories/{{ cat.slug }}">{{ cat.name }}</a></li>
+
+                        {% endfor %}
+
+                        </ul>
+
+
+
+                    </div>
+
+                    <div class="col-md-3 col-md-offset-1 footer-block tweets">
+
+                        <h3>Recent Tweets</h3>
+
+                        <a class="twitter-timeline" href="https://twitter.com/levkaizer" data-widget-id="477916037359226881">Tweets by @levkaizer</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <hr />
+
+                    <div class="col-xs-12 copy">Copyright 2014 K P Bowler.  All rights reserved.  <a href="#">Privacy policy</a></div>
+
+                </div>
+
+            </div>
+
+        </footer>
