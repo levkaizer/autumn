@@ -11,6 +11,7 @@
         <meta name="title" content="{{ this.page.meta_title }}">
         <meta name="author" content="October CMS">
         <link rel="icon" type="image/png" href="{{ 'assets/images/logo.png'|theme }}" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         
         {% styles %}
         <link href="{{ [
@@ -42,16 +43,14 @@
             </div><!--/.nav-collapse -->
           </div>
         </div>
-        <div class="jumbotron" style="background-image:url('{{ bannerImage }}');background-position:center;background-size:cover;">
-			<div class="container">
-				<h1>{{ post.title }}</h1>
-			</div>
-		</div>
+        <div class="container" id="logo">
+
+        </div>
 		<div class="container blog" id="main">
 			<div class="row">
 	
 			<div class="col-sm-8 col-sm-offset-1 col-sm-push-3  box item-list">
-				<span class="icons">{% for cat in post.categories %}<a class="icon icon-{{ cat.slug }} active" href="/categories/{{ cat.slug }}" title="Posts about {{ cat.name }}"></a> {% endfor %}</span>
+				<h1>{{ post.title }} <span class="icons">{% for cat in post.categories %}<a class="icon icon-{{ cat.slug }} active" href="/categories/{{ cat.slug }}" title="Posts about {{ cat.name }}"></a>{% endfor %}</span></h1>
 				<div id="blog-content">
 					{% page %}
 				</div>

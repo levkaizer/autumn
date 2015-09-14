@@ -129,6 +129,7 @@ h1 {
     -webkit-transition: opacity 0.5s;
     /* -webkit-backface-visibility: hidden; */
     transform: translateZ(0);
+    margin-right:3px;
 }
 
 .icon:hover, .icon:active, .icon.active {
@@ -166,6 +167,37 @@ h1 {
 .icon-css {
     background-image:url('../images/icon-css.png');
 }
+
+.icon.icon-archive, .icon.icon-lists {
+	width:40px;
+	height:40px;
+	background-color:#ee1289;
+	border-radius:50%;
+	display:inline-block;
+	font-size:27px;
+	text-align:center;
+	color:#fff;
+	float:left;
+	font-family: FontAwesome;
+}
+
+.icon.icon-lists {
+	padding-top:2px;
+}
+
+.icon.icon-archive:hover, .icon.icon-archive:active, .icon.icon-lists:hover, .icon.icon-lists:active {
+	text-decoration:none;
+}
+
+.icon.icon-archive:before {
+   content: "\f187";
+}
+
+.icon.icon-lists:before {
+   content: "\f00b";
+}
+
+
 
 /* Retina images */
  @media
@@ -311,4 +343,8 @@ details summary::-webkit-details-marker {
 .jumbotron .container h1 {
 	text-align:center;
 	padding:70px;
+}
+
+#blog-content .alert {
+	margin-top:60px;
 }

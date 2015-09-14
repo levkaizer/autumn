@@ -19,15 +19,13 @@ use RainLab\Blog\Models\Post;
 function onEnd()
 {
     $this->page->title = $this['post']->title;
-    $this['bannerImage'] = '';
-    if(count($this['post']->featured_images) > 0) {
-        $this['bannerImage'] = $this['post']->featured_images[0]->getPath();
-    }
     
     $this['postList'] = Post::isPublished()
+					    ->with(['categories' => function($query) {
+					    	$query->where('slug', 'NOT LIKE', '%archive%')
+					    	->take(10);
+					    }])
 					    ->orderBy('published_at', 'desc')
-					    ->take(10)
-					    ->with('categories')
 					    ->get();
 }
 ?>
